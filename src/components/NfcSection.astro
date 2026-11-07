@@ -1,0 +1,42 @@
+---
+import { nfcActions } from '../lib/data';
+---
+
+<section class="section nfc" id="nfc">
+  <div class="wrap nfc-grid">
+    <div class="nfc-copy">
+      <p class="eyebrow eyebrow--light reveal">07 · NFC &amp; QR</p>
+      <h2 class="display reveal">The little card <em>on every table.</em></h2>
+      <p class="lede reveal">
+        Each table carries a small NFC card and a printed QR. Tap or scan and the
+        island’s menu, ordering and loyalty live in your browser — no app, no
+        account, no friction.
+      </p>
+
+      <ul class="nfc-list reveal">
+        {nfcActions.map((a) => (
+          <li>
+            <strong>{a.title}</strong>
+            <span>{a.desc}</span>
+          </li>
+        ))}
+      </ul>
+
+      <div class="nfc-meta reveal">
+        <p><strong>Try it now.</strong> Scan the code, or tap your phone against the card on table 14.</p>
+        <p class="nfc-fine">Destination links are managed from the client dashboard. Repoint a card at any time without reprinting it.</p>
+      </div>
+    </div>
+
+    <div class="nfc-visual reveal">
+      <figure class="qr-card">
+        <img src="/img/qr-daloy.svg" alt="QR code linking to the Daloy menu" width="280" height="280" />
+        <figcaption>
+          <span class="qr-label">Table 14 · Menu</span>
+          <span class="qr-url">daloypalawan.ph/menu</span>
+        </figcaption>
+      </figure>
+      <p class="qr-note">Every card is unique. Analytics are privacy-conscious — counts, not identities.</p>
+    </div>
+  </div>
+</section>

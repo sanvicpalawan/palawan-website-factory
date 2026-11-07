@@ -1,0 +1,25 @@
+---
+import { reviews } from '../lib/data';
+---
+
+<section class="section reviews">
+  <div class="wrap">
+    <header class="section-head reveal">
+      <p class="eyebrow">06 · Word of Mouth</p>
+      <h2 class="display">People who <em>came back.</em></h2>
+    </header>
+
+    <div class="review-grid">
+      {reviews.map((r, i) => (
+        <blockquote class="review reveal" style={`--i:${i}`}>
+          <div class="review-mark" aria-hidden="true">“</div>
+          <p>{r.quote}</p>
+          <footer>
+            <strong>{r.name}</strong>
+            <span>{r.meta}</span>
+          </footer>
+        </blockquote>
+      ))}
+    </div>
+  </div>
+</section>

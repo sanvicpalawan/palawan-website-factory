@@ -1,0 +1,61 @@
+---
+import { site } from '../lib/data';
+---
+
+<section class="reserve" id="reserve">
+  <div class="reserve-media grain" aria-hidden="true">
+    <img src="/img/bar.jpg" alt="" />
+    <div class="reserve-scrim"></div>
+  </div>
+
+  <div class="wrap reserve-body">
+    <p class="eyebrow eyebrow--light reveal">08 · Reservations</p>
+    <h2 class="display reveal">Eighteen tables.<br /><em>Book the good one.</em></h2>
+    <p class="lede reveal">
+      Tell us when and how many. We hold tables for fifteen minutes and never
+      overbook the room.
+    </p>
+
+    <form class="reserve-form reveal" id="reserveForm" novalidate>
+      <div class="field">
+        <label for="date">Date</label>
+        <input type="date" id="date" name="date" required />
+      </div>
+      <div class="field">
+        <label for="time">Time</label>
+        <select id="time" name="time">
+          <option>07:30</option><option>09:00</option><option>11:00</option>
+          <option>12:30</option><option>14:00</option><option>17:30</option>
+          <option selected>18:30</option><option>19:30</option><option>20:30</option><option>21:30</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="party">Guests</label>
+        <select id="party" name="party">
+          <option>1</option><option selected>2</option><option>3</option>
+          <option>4</option><option>5</option><option>6+</option>
+        </select>
+      </div>
+      <div class="field field-wide">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Your name" required />
+      </div>
+      <div class="field field-wide">
+        <label for="contact">Mobile or email</label>
+        <input type="text" id="contact" name="contact" placeholder="+63 9__ ___ ____" required />
+      </div>
+      <div class="field field-wide">
+        <label for="notes">Anything we should know? <span class="optional">(optional)</span></label>
+        <textarea id="notes" name="notes" rows="3" placeholder="Allergies, high chair, window seat…"></textarea>
+      </div>
+      <div class="form-actions">
+        <button class="btn btn-clay btn-lg" type="submit">Request the table</button>
+        <p class="form-note" id="formNote" role="status" aria-live="polite"></p>
+      </div>
+    </form>
+
+    <p class="reserve-alt reveal">
+      Prefer to talk? {site.phone} · <a href={`mailto:${site.email}`}>{site.email}</a>
+    </p>
+  </div>
+</section>

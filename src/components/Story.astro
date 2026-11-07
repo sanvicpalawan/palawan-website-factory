@@ -1,0 +1,37 @@
+---
+import { site } from '../lib/data';
+---
+
+<section class="section story" id="story">
+  <div class="wrap split">
+    <figure class="split-media reveal">
+      <img src="/img/coffee-pour.jpg" alt="A slow pour over at the Daloy bar" loading="lazy" />
+      <figcaption class="media-caption">The bar at 07:40, before the room fills.</figcaption>
+    </figure>
+
+    <div class="split-body">
+      <p class="eyebrow reveal">03 · The Story</p>
+      <h2 class="display reveal">Built by a family that <em>kept the lease.</em></h2>
+      <p class="lede reveal">
+        Daloy began as a single espresso machine in a former sunduke shop on Rizal
+        Avenue. The family who ran it refused three offers for the lease and
+        instead spent a year learning to roast.
+      </p>
+      <p class="body reveal">
+        The room is still owned by them. The coffee comes from three small farms in
+        the Cordillera, the produce from Palawan farms we can name, and the lechon
+        from a supplier whose pigs we have met. Nothing arrives that we cannot
+        explain.
+      </p>
+      <ul class="story-points reveal">
+        <li><span>Roasted</span><strong>Weekly, on the island, in a 12kg drum</strong></li>
+        <li><span>Produce</span><strong>From 14 named farms in Palawan</strong></li>
+        <li><span>Staff</span><strong>18 people, most hired from the neighbourhood</strong></li>
+      </ul>
+      <p class="body reveal">
+        Open {site.hours[0].day.toLowerCase()} {site.hours[0].open}–{site.hours[0].close}, and later
+        on weekends. Walk-ins welcome at the bar; tables are held for reservations.
+      </p>
+    </div>
+  </div>
+</section>

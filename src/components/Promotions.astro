@@ -1,0 +1,26 @@
+---
+import { promotions } from '../lib/data';
+---
+
+<section class="section promos">
+  <div class="wrap">
+    <header class="section-head reveal">
+      <p class="eyebrow">05 · This Week</p>
+      <h2 class="display">Ways to <em>come more often.</em></h2>
+    </header>
+
+    <div class="promo-grid">
+      {promotions.map((p, i) => (
+        <article class="promo reveal" style={`--i:${i}`}>
+          <div class="promo-top">
+            <h3>{p.title}</h3>
+            <span class="chip">{p.tag}</span>
+          </div>
+          <p class="promo-when">{p.when}</p>
+          <p class="promo-desc">{p.desc}</p>
+          <a class="promo-link" href="#reserve">Reserve <span aria-hidden="true">→</span></a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

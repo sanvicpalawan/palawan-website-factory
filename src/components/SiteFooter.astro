@@ -1,0 +1,49 @@
+---
+import { site } from '../lib/data';
+---
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="brand-name">Daloy</span>
+        <p class="footer-tag">{site.tagline}</p>
+        <p class="footer-blurb">
+          A café by day and a table by night. Coffee from the Cordillera, produce
+          from Palawan, and a bar that stays open as long as you are in it.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Visit</h4>
+        <p>{site.address}</p>
+        <p>{site.phone}</p>
+        <a href={`mailto:${site.email}`}>{site.email}</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Hours</h4>
+        {site.hours.map((h) => (
+          <p class="footer-hours"><span>{h.day}</span><span>{h.open} — {h.close}</span></p>
+        ))}
+      </div>
+
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <a href="/#menu">Menu</a>
+        <a href="/#featured">Signature dishes</a>
+        <a href="/#nfc">NFC table menu</a>
+        <a href="/admin">Client area</a>
+      </div>
+    </div>
+
+    <div class="footer-base">
+      <p>© {new Date().getFullYear()} Daloy, Puerto Prinsesa. A demonstration site from Palawan Collective.</p>
+      <p class="footer-links">
+        <a href={site.social.instagram}>Instagram</a>
+        <a href={site.social.facebook}>Facebook</a>
+        <a href="/#reserve">Reserve</a>
+      </p>
+    </div>
+  </div>
+</footer>

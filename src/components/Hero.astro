@@ -1,0 +1,72 @@
+---
+import { site } from '../lib/data';
+
+const words = ['Café', 'Table', 'Kinilaw', 'Barako', 'Ube'];
+---
+
+<section class="hero" id="top">
+  <div class="hero-media grain" aria-hidden="true">
+    <img src="/img/cafe-interior.jpg" alt="" class="hero-img" fetchpriority="high" />
+    <div class="hero-scrim"></div>
+  </div>
+
+  <div class="wrap hero-content">
+    <p class="eyebrow eyebrow--light reveal-hero">
+      <span>{site.place}</span>
+    </p>
+
+    <h1 class="hero-title">
+      <span class="line-mask"><span>A <span class="rotator" id="rotator" aria-live="polite">Café</span> by day,</span></span>
+      <span class="line-mask"><span>a <em>table</em> by night.</span></span>
+    </h1>
+
+    <p class="hero-lede reveal-hero">
+      Coffee from the Cordillera, produce from Palawan, and a bar that stays open
+      as long as you are in it. One room, two moods, no pretence.
+    </p>
+
+    <div class="hero-cta reveal-hero">
+      <a class="btn btn-clay btn-lg" href="#reserve">Reserve a table</a>
+      <a class="btn btn-line btn-lg" href="#menu">See the menu</a>
+    </div>
+
+    <dl class="hero-facts reveal-hero">
+      <div><dt>Coffee origins</dt><dd>3</dd></div>
+      <div><dt>Dishes on the board</dt><dd>24</dd></div>
+      <div><dt>Tables</dt><dd>18</dd></div>
+    </dl>
+  </div>
+
+  <div class="hero-foot">
+    <span class="scrollcue"><span class="cue-line"></span>Scroll</span>
+    <span class="hero-status" id="dayStatus">Café service · open now</span>
+  </div>
+</section>
+
+<script>
+  const words = ['Café', 'Eatery', 'Bistro', 'Kitchen', 'Table'];
+  const el = document.getElementById('rotator');
+  if (el) {
+    let i = 0;
+    setInterval(() => {
+      i = (i + 1) % words.length;
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(12px)';
+      setTimeout(() => {
+        el.textContent = words[i];
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+      }, 260);
+    }, 2600);
+  }
+
+  const status = document.getElementById('dayStatus');
+  if (status) {
+    const h = new Date().getHours();
+    status.textContent =
+      h >= 7 && h < 17 ? 'Café service · open now'
+      : h >= 17 && h < 23 ? 'Table service · open now'
+      : h >= 23 || h < 7 ? 'Closed · back at 07:00'
+      : 'Open now';
+  }
+</script>

@@ -1,0 +1,75 @@
+---
+import '../styles/global.css';
+import '../styles/site.css';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+  /** Hide the site chrome (used for the client admin) */
+  bare?: boolean;
+}
+
+const {
+  title,
+  description = 'Daloy is a café by day and a table by night in Puerto Prinsesa, Palawan. Coffee, kinilaw, lechon and a long bar.',
+  ogImage = '/img/cafe-interior.jpg',
+  bare = false,
+} = Astro.props;
+
+const path = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#1a1410" />
+    <link rel="canonical" href={new URL(path, Astro.site ?? 'http://localhost:4321')} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231a1410'/%3E%3Cpath d='M16 4c3 5 6.5 8.5 6.5 12.5a6.5 6.5 0 0 1-13 0C9.5 12.5 13 9 16 4z' fill='%23c99a5b'/%3E%3C/svg%3E" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Restaurant',
+      name: 'Daloy',
+      servesCuisine: ['Filipino', 'Café', 'Coffee'],
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: '14 Rizal Avenue',
+        addressLocality: 'Puerto Prinsesa City',
+        addressRegion: 'Palawan',
+        postalCode: '5300',
+        addressCountry: 'PH',
+      },
+      telephone: '+63 917 555 0142',
+      acceptsReservations: 'True',
+      openingHours: ['Mo-Fr 07:00-23:00', 'Sa 08:00-00:00', 'Su 08:00-21:00'],
+    })} />
+  </head>
+  <body>
+    {!bare && <SiteHeader path={path} />}
+    <slot />
+    {!bare && <SiteFooter />}
+
+    <script>
+      import '../scripts/main';
+    </script>
+  </body>
+</html>
