@@ -1,12 +1,13 @@
 ---
 import { site } from '../lib/data';
+import { asset } from '../lib/asset';
 
 const words = ['Café', 'Table', 'Kinilaw', 'Barako', 'Ube'];
 ---
 
 <section class="hero" id="top">
   <div class="hero-media grain" aria-hidden="true">
-    <img src="/img/cafe-interior.jpg" alt="" class="hero-img" fetchpriority="high" />
+    <img src={asset('/img/cafe-interior.jpg')} alt="" class="hero-img" fetchpriority="high" />
     <div class="hero-scrim"></div>
   </div>
 

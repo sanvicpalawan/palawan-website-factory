@@ -1,5 +1,6 @@
 ---
 import { gallery } from '../lib/data';
+import { asset } from '../lib/asset';
 ---
 
 <section class="section gallery" id="gallery">
@@ -13,7 +14,7 @@ import { gallery } from '../lib/data';
   <div class="gallery-strip" id="galleryStrip">
     {gallery.map((g) => (
       <figure class="gallery-item reveal">
-        <img src={g.img} alt={g.alt} loading="lazy" />
+        <img src={asset(g.img)} alt={g.alt} loading="lazy" />
       </figure>
     ))}
   </div>

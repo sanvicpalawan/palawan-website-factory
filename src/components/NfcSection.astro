@@ -1,5 +1,6 @@
 ---
 import { nfcActions } from '../lib/data';
+import { asset } from '../lib/asset';
 ---
 
 <section class="section nfc" id="nfc">
@@ -30,7 +31,7 @@ import { nfcActions } from '../lib/data';
 
     <div class="nfc-visual reveal">
       <figure class="qr-card">
-        <img src="/img/qr-daloy.svg" alt="QR code linking to the Daloy menu" width="280" height="280" />
+        <img src={asset('/img/qr-daloy.svg')} alt="QR code linking to the Daloy menu" width="280" height="280" />
         <figcaption>
           <span class="qr-label">Table 14 · Menu</span>
           <span class="qr-url">daloypalawan.ph/menu</span>

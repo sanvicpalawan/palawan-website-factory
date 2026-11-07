@@ -1,11 +1,12 @@
 ---
 import { site } from '../lib/data';
+import { asset } from '../lib/asset';
 ---
 
 <section class="section story" id="story">
   <div class="wrap split">
     <figure class="split-media reveal">
-      <img src="/img/coffee-pour.jpg" alt="A slow pour over at the Daloy bar" loading="lazy" />
+      <img src={asset('/img/coffee-pour.jpg')} alt="A slow pour over at the Daloy bar" loading="lazy" />
       <figcaption class="media-caption">The bar at 07:40, before the room fills.</figcaption>
     </figure>
 

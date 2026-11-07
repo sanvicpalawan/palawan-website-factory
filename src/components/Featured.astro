@@ -1,5 +1,6 @@
 ---
 import { featured } from '../lib/data';
+import { asset } from '../lib/asset';
 ---
 
 <section class="section featured" id="featured">
@@ -13,7 +14,7 @@ import { featured } from '../lib/data';
       {featured.map((d, i) => (
         <article class="dish reveal" style={`--i:${i}`}>
           <figure class="dish-media">
-            <img src={d.img} alt={d.name} loading="lazy" />
+            <img src={asset(d.img)} alt={d.name} loading="lazy" />
             <span class="dish-cat">{d.category}</span>
           </figure>
           <div class="dish-body">

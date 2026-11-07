@@ -1,10 +1,11 @@
 ---
 import { site } from '../lib/data';
+import { asset } from '../lib/asset';
 ---
 
 <section class="reserve" id="reserve">
   <div class="reserve-media grain" aria-hidden="true">
-    <img src="/img/bar.jpg" alt="" />
+    <img src={asset('/img/bar.jpg')} alt="" />
     <div class="reserve-scrim"></div>
   </div>
 
