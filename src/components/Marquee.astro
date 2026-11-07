@@ -1,0 +1,18 @@
+---
+const items = ['Barako', 'Kinilaw', 'Lechon', 'Calamansi', 'Adlai', 'Saging', 'Ube', 'Tablea', 'Pandesal', 'Buro'];
+---
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    {[0, 1].map((copy) => (
+      <div class="marquee-group" key={copy}>
+        {items.map((i) => (
+          <span class="marquee-item">
+            <span>{i}</span>
+            <svg viewBox="0 0 8 8" width="8" height="8" aria-hidden="true"><circle cx="4" cy="4" r="2" fill="currentColor" /></svg>
+          </span>
+        ))}
+      </div>
+    ))}
+  </div>
+</div>

@@ -1,0 +1,196 @@
+---
+import Base from '../layouts/Base.astro';
+import { tours, packages, days, crew, faqs } from '../lib/tours';
+
+const assets = (p: string) => `${import.meta.env.BASE_URL}${p.replace(/^\//, '')}`;
+---
+
+<Base
+  title="Daluyon Island Hopping — El Nido & Bacuit Bay, Palawan"
+  description="Small-group island hopping in El Nido, Palawan. Tour A, B and C, sunset cruises and private charters with local guides."
+  flavor="tours"
+>
+  <!-- HERO -->
+  <section class="hero hero-tours">
+    <div class="hero-media grain" aria-hidden="true">
+      <img src={assets('/img/tours/lagoon.jpg')} alt="" class="hero-img" fetchpriority="high" />
+      <div class="hero-scrim"></div>
+    </div>
+    <div class="wrap hero-content">
+      <p class="eyebrow eyebrow--light reveal-hero"><span>{tours.place}</span></p>
+      <h1 class="hero-title">
+        <span class="line-mask"><span>Every island</span></span>
+        <span class="line-mask"><span>has an <em>hour.</em></span></span>
+      </h1>
+      <p class="hero-lede reveal-hero">
+        {tours.tagline} We run small groups on the right tide, with guides who grew up on this bay.
+      </p>
+      <div class="hero-cta reveal-hero">
+        <a class="btn btn-coral btn-lg" href="#reserve">Book a seat</a>
+        <a class="btn btn-line btn-lg" href="#packages">See the tours</a>
+      </div>
+      <dl class="hero-facts reveal-hero">
+        <div><dt>Small groups</dt><dd>12</dd></div>
+        <div><dt>Years on the bay</dt><dd>14</dd></div>
+        <div><dt>Tour codes</dt><dd>4</dd></div>
+      </dl>
+    </div>
+    <div class="hero-foot">
+      <span class="scrollcue"><span class="cue-line"></span>Scroll</span>
+      <span class="hero-status">Daily departures · 08:30 from El Nido</span>
+    </div>
+  </section>
+
+  <!-- PACKAGES -->
+  <section class="section" id="packages">
+    <div class="wrap">
+      <header class="section-head reveal">
+        <p class="eyebrow">01 · The Tours</p>
+        <h2 class="display">Four ways to <em>spend a day.</em></h2>
+        <p class="lede">Every tour includes a boat, a crew of three, snorkel gear, towels, lunch and transfers from El Nido town.</p>
+      </header>
+      <div class="tour-grid">
+        {packages.map((p) => (
+          <article class="tour-card reveal">
+            <figure class="tour-media">
+              <img src={assets(p.img)} alt={p.name} loading="lazy" />
+              <span class="tour-code">{p.code}</span>
+            </figure>
+            <div class="tour-body">
+              <h3>{p.name}</h3>
+              <p class="tour-meta">{p.duration} · from ₱{p.price.toLocaleString()} / person</p>
+              <p class="tour-desc">{p.desc}</p>
+              <ul class="tour-highlights">
+                {p.highlights.map((h) => <li>{h}</li>)}
+              </ul>
+              <div class="tour-foot">
+                <a class="btn btn-coral btn-sm" href="#reserve" data-tour={p.code}>Book {p.code}</a>
+                <a class="tour-wa" href={`https://wa.me/639175550188?text=Hi%20Daluyon%2C%20I%27d%20like%20to%20book%20${encodeURIComponent(p.code)}`} target="_blank" rel="noopener">WhatsApp</a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- A DAY -->
+  <section class="section section-tint" id="day">
+    <div class="wrap split">
+      <div class="split-body">
+        <p class="eyebrow reveal">02 · The Day</p>
+        <h2 class="display reveal">What a day <em>looks like.</em></h2>
+        <p class="lede reveal">Tour A, door to door. Times shift with the tide and the weather — this is the shape of it.</p>
+      </div>
+      <ol class="timeline reveal">
+        {days.map((d) => (
+          <li>
+            <span class="timeline-time">{d.time}</span>
+            <div><strong>{d.title}</strong><span>{d.desc}</span></div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- CREW -->
+  <section class="section" id="crew">
+    <div class="wrap">
+      <header class="section-head reveal">
+        <p class="eyebrow">03 · The Crew</p>
+        <h2 class="display">The people <em>on the boat.</em></h2>
+      </header>
+      <div class="card-grid three">
+        {crew.map((c) => (
+          <figure class="crew-card reveal">
+            <img src={assets(c.img)} alt={c.name} loading="lazy" />
+            <figcaption><strong>{c.name}</strong><span>{c.role}</span></figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- NFC -->
+  <section class="nfc" id="nfc">
+    <div class="wrap nfc-grid">
+      <div class="nfc-copy">
+        <p class="eyebrow eyebrow--light reveal">04 · NFC &amp; QR</p>
+        <h2 class="display reveal">Scan the bracelet. <em>Find your boat.</em></h2>
+        <p class="lede reveal">
+          Every guest gets a waterproof NFC bracelet. Tap it at the pier and your tour, your
+          crew and your pickup time are right there — plus a shortcut to rebook before you fly.
+        </p>
+        <ul class="nfc-list reveal">
+          <li><strong>Today’s itinerary</strong><span>Stops, times and swim windows on your phone.</span></li>
+          <li><strong>Your crew</strong><span>Names, photos and a direct WhatsApp line.</span></li>
+          <li><strong>Photos &amp; reviews</strong><span>The day’s shots land in your gallery within the hour.</span></li>
+          <li><strong>Rebook &amp; refer</strong><span>Come back, or send a friend — the bracelet remembers.</span></li>
+        </ul>
+      </div>
+      <div class="nfc-visual reveal">
+        <figure class="qr-card">
+          <img src={assets('/img/qr-daloy.svg')} alt="QR code for the Daluyon pier" width="220" height="220" />
+          <figcaption><span class="qr-label">Pier 2 · Tour A</span><span class="qr-url">daluyonpalawan.ph/pier</span></figcaption>
+        </figure>
+        <p class="qr-note">Bracelets are issued at check-in. Destinations can be repointed from the dashboard without issuing new ones.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="wrap split">
+      <div class="split-body">
+        <p class="eyebrow reveal">05 · Before You Ask</p>
+        <h2 class="display reveal">Straight <em>answers.</em></h2>
+      </div>
+      <div class="faq-list reveal">
+        {faqs.map((f, i) => (
+          <details class="faq" open={i === 0}>
+            <summary>{f.q}<span class="faq-icon" aria-hidden="true">+</span></summary>
+            <p>{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- RESERVE -->
+  <section class="reserve" id="reserve">
+    <div class="reserve-media grain" aria-hidden="true">
+      <img src={assets('/img/tours/sunset-boat.jpg')} alt="" loading="lazy" />
+      <div class="reserve-scrim"></div>
+    </div>
+    <div class="wrap reserve-body">
+      <p class="eyebrow eyebrow--light reveal">06 · Book</p>
+      <h2 class="display reveal">Pick a date.<br /><em>We’ll bring the boat.</em></h2>
+      <p class="lede reveal">
+        Tell us the tour and the number of guests. We hold seats for 24 hours and confirm
+        by WhatsApp before 20:00 the day before.
+      </p>
+      <form class="reserve-form reveal" data-reserve novalidate>
+        <div class="field field-wide"><label for="t-tour">Tour</label>
+          <select id="t-tour" name="tour">
+            {packages.map((p) => <option value={p.code}>{p.code} — {p.name}</option>)}
+            <option>Private charter</option>
+          </select>
+        </div>
+        <div class="field"><label for="t-date">Date</label><input type="date" id="t-date" name="date" required /></div>
+        <div class="field"><label for="t-party">Guests</label>
+          <select id="t-party" name="party"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6+</option></select>
+        </div>
+        <div class="field field-wide"><label for="t-name">Name</label><input type="text" id="t-name" name="name" placeholder="Your name" required /></div>
+        <div class="field field-wide"><label for="t-contact">WhatsApp or email</label><input type="text" id="t-contact" name="contact" placeholder="+63 9__ ___ ____" required /></div>
+        <div class="field field-wide"><label for="t-notes">Hotel &amp; notes <span class="optional">(optional)</span></label><textarea id="t-notes" name="notes" rows="3" placeholder="Where you’re staying, dietary needs, celebrating…"></textarea></div>
+        <div class="form-actions">
+          <button class="btn btn-coral btn-lg" type="submit">Request seats</button>
+          <p class="form-note" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+      <p class="reserve-alt reveal">
+        Fastest: <a href={`https://wa.me/639175550188`} target="_blank" rel="noopener">WhatsApp {tours.whatsapp}</a> · {tours.phone}
+      </p>
+    </div>
+  </section>
+</Base>

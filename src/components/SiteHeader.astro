@@ -1,0 +1,67 @@
+---
+import { site } from '../lib/data';
+
+const { path = '/', flavor = 'cafe' } = Astro.props;
+
+const links = [
+  { href: flavor === 'cafe' ? '/#menu' : '/#packages', label: 'Menu' },
+  { href: flavor === 'cafe' ? '/#featured' : '/#day', label: 'Signature' },
+  { href: flavor === 'cafe' ? '/#story' : '/#crew', label: 'Story' },
+  { href: flavor === 'cafe' ? '/#gallery' : '/#faq', label: 'Gallery' },
+  { href: '/#nfc', label: 'NFC' },
+];
+
+const starters = [
+  { href: '/', label: 'Café' },
+  { href: '/resort/', label: 'Resort' },
+  { href: '/tours/', label: 'Tours' },
+];
+---
+
+<header class="site-header" id="siteHeader">
+  <div class="wrap header-inner">
+    <a class="brand" href="/" aria-label="Daloy — home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32" width="24" height="24" fill="none">
+          <path d="M16 3c3.4 5.6 7 9.2 7 13.4a7 7 0 0 1-14 0C9 12.2 12.6 8.6 16 3z" stroke="currentColor" stroke-width="1.3" />
+          <path d="M3 26c4-2.2 6 2.2 10 0s6 2.2 10 0 5 1.2 6 0" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" />
+        </svg>
+      </span>
+      <span class="brand-text">
+        <span class="brand-name">Daloy</span>
+        <span class="brand-sub">Café · Table · Palawan</span>
+      </span>
+    </a>
+
+    <nav class="site-nav" aria-label="Primary">
+      {links.map((l) => (
+        <a href={l.href} aria-current={path === l.href ? 'page' : undefined}>{l.label}</a>
+      ))}
+    </nav>
+
+    <div class="header-actions">
+      <nav class="starters-nav" aria-label="Starters">
+        {starters.map((s) => (
+          <a href={s.href} aria-current={path === s.href ? 'page' : undefined}>{s.label}</a>
+        ))}
+      </nav>
+      <a class="btn btn-ghost btn-sm" href="/admin">Client area</a>
+      <a class="btn btn-clay btn-sm" href="/#reserve">Reserve a table</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <nav aria-label="Mobile" class="wrap">
+    {links.map((l) => <a href={l.href}>{l.label}</a>)}
+    <a href="/#reserve" class="btn btn-clay">Reserve a table</a>
+    <a href="/admin" class="btn btn-ghost">Client area</a>
+    <p class="mobile-contact">
+      {site.phone}<br />
+      <a href={`mailto:${site.email}`}>{site.email}</a>
+    </p>
+  </nav>
+</div>

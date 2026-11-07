@@ -1,0 +1,57 @@
+---
+import { menu, menuCategories } from '../lib/data';
+---
+
+<section class="section menu-section" id="menu">
+  <div class="wrap">
+    <header class="section-head reveal">
+      <p class="eyebrow">01 · The Menu</p>
+      <h2 class="display">Two menus, <em>one room.</em></h2>
+      <p class="lede">The board changes at six. Everything on it was grown, caught or roasted within the province — or it is not on it.</p>
+    </header>
+
+    <div class="menu-tabs reveal" role="tablist" aria-label="Menu categories">
+      {menuCategories.map((c, i) => (
+        <button
+          class:list={['menu-tab', i === 0 && 'is-active']}
+          role="tab"
+          aria-selected={i === 0}
+          data-category={c.id}
+        >
+          {c.label}
+        </button>
+      ))}
+    </div>
+
+    <p class="menu-note reveal" id="menuNote">{menuCategories[0].note}</p>
+
+    <div class="menu-board" id="menuBoard">
+      {menuCategories.map((c, ci) => (
+        <ul class:list={['menu-list', ci === 0 && 'is-active']} data-category={c.id} role="tabpanel">
+          {menu[c.id].map((item) => (
+            <li class="menu-item">
+              <div class="menu-item-head">
+                <h3>{item.name}</h3>
+                <span class="rule-dotted" aria-hidden="true"></span>
+                <span class="menu-price">₱{item.price}</span>
+              </div>
+              <p class="menu-desc">{item.desc}</p>
+              {item.tags && (
+                <ul class="menu-tags">
+                  {item.tags.map((t) => (
+                    <li class:list={[t === 'veg' && 'tag-veg', t === 'spicy' && 'tag-spicy']}>{t}</li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          ))}
+        </ul>
+      ))}
+    </div>
+
+    <p class="menu-foot reveal">
+      Full allergen and vegan notes are available from any member of staff.
+      <a href="#reserve">Tell us before you book</a> and the kitchen will be ready.
+    </p>
+  </div>
+</section>

@@ -1,0 +1,32 @@
+---
+import { featured } from '../lib/data';
+import { asset } from '../lib/asset';
+---
+
+<section class="section featured" id="featured">
+  <div class="wrap">
+    <header class="section-head reveal">
+      <p class="eyebrow">02 · Signature</p>
+      <h2 class="display">Four things <em>we are known for.</em></h2>
+    </header>
+
+    <div class="featured-grid">
+      {featured.map((d, i) => (
+        <article class="dish reveal" style={`--i:${i}`}>
+          <figure class="dish-media">
+            <img src={asset(d.img)} alt={d.name} loading="lazy" />
+            <span class="dish-cat">{d.category}</span>
+          </figure>
+          <div class="dish-body">
+            <div class="dish-head">
+              <h3>{d.name}</h3>
+              <span class="dish-price">₱{d.price}</span>
+            </div>
+            <p>{d.desc}</p>
+            <a class="dish-link" href="#reserve">Book a table for this <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

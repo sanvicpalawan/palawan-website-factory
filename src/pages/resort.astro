@@ -1,0 +1,255 @@
+---
+import Base from '../layouts/Base.astro';
+import { resort, villas, experiences, wellness, dining, journal } from '../lib/resort';
+
+const assets = (p: string) => `${import.meta.env.BASE_URL}${p.replace(/^\//, '')}`;
+---
+
+<Base
+  title="Amanpulo Eco-Resort — A Private Island in Palawan"
+  description="A private island eco-resort on Pamalican Island, Palawan. Limestone forest, seven kilometres of reef and white sand, held in trust."
+  flavor="resort"
+>
+  <!-- HERO -->
+  <section class="hero hero-resort">
+    <div class="hero-media grain" aria-hidden="true">
+      <img src={assets('/img/resort/hero-lagoon.jpg')} alt="" class="hero-img" fetchpriority="high" />
+      <div class="hero-scrim"></div>
+    </div>
+    <div class="wrap hero-content">
+      <p class="eyebrow eyebrow--light reveal-hero"><span>{resort.place}</span></p>
+      <h1 class="hero-title">
+        <span class="line-mask"><span>A private island,</span></span>
+        <span class="line-mask"><span>quietly <em>preserved.</em></span></span>
+      </h1>
+      <p class="hero-lede reveal-hero">
+        One hundred and twenty hectares of limestone forest, coral garden and white sand —
+        held in trust for the people who will come after you.
+      </p>
+      <div class="hero-cta reveal-hero">
+        <a class="btn btn-gold btn-lg" href="#reserve">Reserve a stay</a>
+        <a class="btn btn-line btn-lg" href="#stay">See the island</a>
+      </div>
+      <dl class="hero-facts reveal-hero">
+        <div><dt>Private island</dt><dd>1</dd></div>
+        <div><dt>House reef</dt><dd>7 km</dd></div>
+        <div><dt>Single-use plastic</dt><dd>0</dd></div>
+      </dl>
+    </div>
+    <div class="hero-foot">
+      <span class="scrollcue"><span class="cue-line"></span>Scroll</span>
+      <span class="hero-status">Reservations open · dry season</span>
+    </div>
+  </section>
+
+  <!-- PHILOSOPHY -->
+  <section class="section" id="island">
+    <div class="wrap split">
+      <figure class="split-media reveal">
+        <img src={assets('/img/resort/lagoon.jpg')} alt="A limestone cliff above a hidden white-sand cove in El Nido." loading="lazy" />
+        <figcaption class="media-caption">Bacuit Bay — the island’s western shore.</figcaption>
+      </figure>
+      <div class="split-body">
+        <p class="eyebrow reveal">01 · The Island</p>
+        <h2 class="display reveal">Luxury, measured by <em>what it leaves behind.</em></h2>
+        <p class="lede reveal">
+          Amanpulo was built on a simple agreement: the island would be a guest, not a host.
+          Every structure sits inside the tree line, every path was laid by hand.
+        </p>
+        <p class="body reveal">
+          Solar arrays and battery storage carry the island after dark. Rainwater is captured,
+          filtered and returned to the ground. The reef — seven kilometres of it — is patrolled,
+          planted and left alone to do what reefs do best.
+        </p>
+        <dl class="stat-grid reveal">
+          <div><dt>Solar-powered</dt><dd>100%</dd></div>
+          <div><dt>Reef restored</dt><dd>7 km</dd></div>
+          <div><dt>Species protected</dt><dd>58</dd></div>
+          <div><dt>Single-use plastic</dt><dd>0</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- STAY -->
+  <section class="section section-tint" id="stay">
+    <div class="wrap">
+      <header class="section-head reveal">
+        <p class="eyebrow">02 · Stay</p>
+        <h2 class="display">Rooms that disappear <em>into the trees.</em></h2>
+        <p class="lede">Thirty-two villas and casitas, each positioned for a single view. No two share the same horizon.</p>
+      </header>
+      <div class="card-grid three">
+        {villas.map((v) => (
+          <article class="stay-card reveal">
+            <figure class="card-media">
+              <img src={assets(v.img)} alt={v.name} loading="lazy" />
+            </figure>
+            <div class="card-body">
+              <h3>{v.name}</h3>
+              <p class="card-size">{v.size}</p>
+              <p>{v.desc}</p>
+              <p class="card-meta">From ₱{v.price.toLocaleString()} <span>/ night</span></p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCES -->
+  <section class="section" id="explore">
+    <div class="wrap">
+      <header class="section-head reveal">
+        <p class="eyebrow">03 · Explore</p>
+        <h2 class="display">Three worlds, <em>one shoreline.</em></h2>
+        <p class="lede">Reef, lagoon and limestone forest — each with its own guide, its own boat and its own hour of the day.</p>
+      </header>
+      <div class="card-grid four">
+        {experiences.map((x) => (
+          <article class="exp-card reveal">
+            <figure><img src={assets(x.img)} alt={x.title} loading="lazy" /></figure>
+            <div class="exp-body">
+              <h3>{x.title}</h3>
+              <p>{x.desc}</p>
+              <span class="exp-tag">{x.tag}</span>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERLUDE -->
+  <section class="interlude">
+    <div class="interlude-media grain" aria-hidden="true">
+      <img src={assets('/img/resort/coron-cliffs.jpg')} alt="" loading="lazy" />
+      <div class="interlude-scrim"></div>
+    </div>
+    <blockquote class="interlude-quote wrap">
+      <p class="reveal">“We do not own the island. We are keeping it for a while.”</p>
+      <cite class="reveal">— The founding family, 1993</cite>
+    </blockquote>
+  </section>
+
+  <!-- WELLNESS -->
+  <section class="section" id="wellness">
+    <div class="wrap split split-reverse">
+      <figure class="split-media reveal">
+        <img src={assets('/img/resort/yoga.jpg')} alt="A guest practising yoga on the beach at first light." loading="lazy" />
+        <figcaption class="media-caption">Sunrise practice on the north beach, 06:15.</figcaption>
+      </figure>
+      <div class="split-body">
+        <p class="eyebrow reveal">04 · Wellness</p>
+        <h2 class="display reveal">The body remembers <em>the tide.</em></h2>
+        <p class="lede reveal">
+          Wellness here is not a programme. It is the default setting — salt air, early light,
+          and a schedule that bends around the sun rather than the clock.
+        </p>
+        <ul class="feature-list reveal">
+          {wellness.map((w) => (
+            <li><strong>{w.title}</strong><span>{w.desc}</span></li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- DINING -->
+  <section class="section section-tint" id="dining">
+    <div class="wrap">
+      <header class="section-head reveal">
+        <p class="eyebrow">05 · Dining</p>
+        <h2 class="display">From reef to table, <em>in a single tide.</em></h2>
+      </header>
+      <div class="card-grid three">
+        {dining.map((d) => (
+          <article class="dish reveal">
+            <figure class="dish-media"><img src={assets(d.img)} alt={d.name} loading="lazy" /><span class="dish-cat">{d.course}</span></figure>
+            <div class="dish-body">
+              <h3>{d.name}</h3>
+              <p>{d.desc}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- NFC -->
+  <section class="nfc" id="nfc">
+    <div class="wrap nfc-grid">
+      <div class="nfc-copy">
+        <p class="eyebrow eyebrow--light reveal">06 · NFC &amp; QR</p>
+        <h2 class="display reveal">The little card <em>in every villa.</em></h2>
+        <p class="lede reveal">
+          Tap the card on the bedpost and the concierge, spa bookings, room service and island
+          guide open in your browser. No app, no account, no friction.
+        </p>
+        <ul class="nfc-list reveal">
+          <li><strong>Concierge</strong><span>Message the front desk, anytime, in your language.</span></li>
+          <li><strong>Spa &amp; activities</strong><span>Book a treatment or a private boat in two taps.</span></li>
+          <li><strong>Room service</strong><span>Order to the villa and settle at checkout.</span></li>
+          <li><strong>Wi-Fi &amp; reviews</strong><span>Connect instantly, and leave feedback before you fly.</span></li>
+        </ul>
+      </div>
+      <div class="nfc-visual reveal">
+        <figure class="qr-card">
+          <img src={assets('/img/qr-daloy.svg')} alt="QR code for the villa concierge" width="220" height="220" />
+          <figcaption><span class="qr-label">Villa 12 · Concierge</span><span class="qr-url">amanpulo-palawan.ph/concierge</span></figcaption>
+        </figure>
+        <p class="qr-note">Every card is unique. Destinations are managed from the client dashboard and can be repointed without reprinting.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOURNAL -->
+  <section class="section section-tint" id="journal">
+    <div class="wrap">
+      <header class="section-head reveal">
+        <p class="eyebrow">06 · Journal</p>
+        <h2 class="display">Notes from <em>the island.</em></h2>
+      </header>
+      <div class="card-grid three">
+        {journal.map((j) => (
+          <article class="journal-card reveal">
+            <p class="journal-kicker">{j.kicker}</p>
+            <h3>{j.title}</h3>
+            <p>{j.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- RESERVE -->
+  <section class="reserve" id="reserve">
+    <div class="reserve-media grain" aria-hidden="true">
+      <img src={assets('/img/resort/sunset-beach.jpg')} alt="" loading="lazy" />
+      <div class="reserve-scrim"></div>
+    </div>
+    <div class="wrap reserve-body">
+      <p class="eyebrow eyebrow--light reveal">07 · Reservations</p>
+      <h2 class="display reveal">The island is small.<br /><em>Come while it’s quiet.</em></h2>
+      <p class="lede reveal">
+        Thirty-two rooms, one island, and a strict limit on the number of guests at any time.
+        We recommend booking four months ahead for the dry season.
+      </p>
+      <form class="reserve-form reveal" data-reserve novalidate>
+        <div class="field"><label for="r-date">Arrival</label><input type="date" id="r-date" name="date" required /></div>
+        <div class="field"><label for="r-dep">Departure</label><input type="date" id="r-dep" name="departure" required /></div>
+        <div class="field"><label for="r-party">Guests</label>
+          <select id="r-party" name="party"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5+</option></select>
+        </div>
+        <div class="field field-wide"><label for="r-name">Name</label><input type="text" id="r-name" name="name" placeholder="Your name" required /></div>
+        <div class="field field-wide"><label for="r-contact">Mobile or email</label><input type="text" id="r-contact" name="contact" placeholder="+63 9__ ___ ____" required /></div>
+        <div class="field field-wide"><label for="r-notes">Anything we should know? <span class="optional">(optional)</span></label><textarea id="r-notes" name="notes" rows="3" placeholder="Allergies, celebrations, arrival time…"></textarea></div>
+        <div class="form-actions">
+          <button class="btn btn-gold btn-lg" type="submit">Request a stay</button>
+          <p class="form-note" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+      <p class="reserve-alt reveal">Prefer to talk? {resort.phone} · <a href={`mailto:${resort.email}`}>{resort.email}</a></p>
+    </div>
+  </section>
+</Base>
